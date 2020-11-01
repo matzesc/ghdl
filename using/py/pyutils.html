@@ -1,0 +1,365 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>libghdl.thin.vhdl.pyutils &mdash; GHDL 1.0-dev documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Debugging" href="../../development/Debugging.html" />
+    <link rel="prev" title="libghdl.thin.vhdl" href="vhdl.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> GHDL
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../about.html">About GHDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../licenses.html">Copyrights | Licenses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting GHDL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting/Releases.html">Releases and sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting/index.html">Building GHDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting/PrecompileVendorPrimitives.html">Precompile Vendor Primitives</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GHDL usage</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start/README.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../InvokingGHDL.html">Invoking GHDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Simulation.html">Simulation (runtime)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Synthesis.html">Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CommandReference.html">Additional Command Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Foreign.html">Co-simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ImplementationOfVHDL.html">Implementation of VHDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ImplementationOfVITAL.html">Implementation of VITAL</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="libghdl.html">Python Interface</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="thin.html">libghdl.thin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vhdl.html">libghdl.thin.vhdl</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">libghdl.thin.vhdl.pyutils</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../development/Debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/CodingStyle.html">Coding Style</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internals</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../internals/Overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../internals/Frontend.html">Front-end</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../internals/AST.html">AST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../internals/RTI.html">Run Time Information (RTI)</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Index</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../genindex.html">Index</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GHDL</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="libghdl.html">Python Interface</a> &raquo;</li>
+        
+      <li>libghdl.thin.vhdl.pyutils</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/ghdl/ghdl/blob/master/doc/using/py/pyutils.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-libghdl.thin.vhdl.pyutils">
+<span id="libghdl-thin-vhdl-pyutils"></span><h1>libghdl.thin.vhdl.pyutils<a class="headerlink" href="#module-libghdl.thin.vhdl.pyutils" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="libghdl.thin.vhdl.pyutils.attr_image">
+<code class="sig-prename descclassname">libghdl.thin.vhdl.pyutils.</code><code class="sig-name descname">attr_image</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">a</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libghdl/thin/vhdl/pyutils.html#attr_image"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libghdl.thin.vhdl.pyutils.attr_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>String representation of Nodes_Meta.Attr a</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="libghdl.thin.vhdl.pyutils.chain_iter">
+<code class="sig-prename descclassname">libghdl.thin.vhdl.pyutils.</code><code class="sig-name descname">chain_iter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libghdl/thin/vhdl/pyutils.html#chain_iter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libghdl.thin.vhdl.pyutils.chain_iter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterate of a chain headed by node n</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="libghdl.thin.vhdl.pyutils.chain_to_list">
+<code class="sig-prename descclassname">libghdl.thin.vhdl.pyutils.</code><code class="sig-name descname">chain_to_list</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libghdl/thin/vhdl/pyutils.html#chain_to_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libghdl.thin.vhdl.pyutils.chain_to_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a chain headed by node n to a python list</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="libghdl.thin.vhdl.pyutils.concurrent_stmts_iter">
+<code class="sig-prename descclassname">libghdl.thin.vhdl.pyutils.</code><code class="sig-name descname">concurrent_stmts_iter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libghdl/thin/vhdl/pyutils.html#concurrent_stmts_iter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libghdl.thin.vhdl.pyutils.concurrent_stmts_iter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterator on concurrent statements in n.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="libghdl.thin.vhdl.pyutils.constructs_iter">
+<code class="sig-prename descclassname">libghdl.thin.vhdl.pyutils.</code><code class="sig-name descname">constructs_iter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libghdl/thin/vhdl/pyutils.html#constructs_iter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libghdl.thin.vhdl.pyutils.constructs_iter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterator on library unit, concurrent statements and declarations
+that appear directly within a declarative part.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="libghdl.thin.vhdl.pyutils.declarations_iter">
+<code class="sig-prename descclassname">libghdl.thin.vhdl.pyutils.</code><code class="sig-name descname">declarations_iter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libghdl/thin/vhdl/pyutils.html#declarations_iter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libghdl.thin.vhdl.pyutils.declarations_iter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterator on all declarations in n.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="libghdl.thin.vhdl.pyutils.fields_image">
+<code class="sig-prename descclassname">libghdl.thin.vhdl.pyutils.</code><code class="sig-name descname">fields_image</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">idx</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libghdl/thin/vhdl/pyutils.html#fields_image"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libghdl.thin.vhdl.pyutils.fields_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>String representation of field idx</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="libghdl.thin.vhdl.pyutils.fields_iter">
+<code class="sig-prename descclassname">libghdl.thin.vhdl.pyutils.</code><code class="sig-name descname">fields_iter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libghdl/thin/vhdl/pyutils.html#fields_iter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libghdl.thin.vhdl.pyutils.fields_iter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterate on fields of node n</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="libghdl.thin.vhdl.pyutils.flist_iter">
+<code class="sig-prename descclassname">libghdl.thin.vhdl.pyutils.</code><code class="sig-name descname">flist_iter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lst</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libghdl/thin/vhdl/pyutils.html#flist_iter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libghdl.thin.vhdl.pyutils.flist_iter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterate of all element of Iir_List lst.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="libghdl.thin.vhdl.pyutils.kind_image">
+<code class="sig-prename descclassname">libghdl.thin.vhdl.pyutils.</code><code class="sig-name descname">kind_image</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">k</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libghdl/thin/vhdl/pyutils.html#kind_image"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libghdl.thin.vhdl.pyutils.kind_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>String representation of Iir_Kind k</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="libghdl.thin.vhdl.pyutils.leftest_location">
+<code class="sig-prename descclassname">libghdl.thin.vhdl.pyutils.</code><code class="sig-name descname">leftest_location</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libghdl/thin/vhdl/pyutils.html#leftest_location"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libghdl.thin.vhdl.pyutils.leftest_location" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="libghdl.thin.vhdl.pyutils.list_iter">
+<code class="sig-prename descclassname">libghdl.thin.vhdl.pyutils.</code><code class="sig-name descname">list_iter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lst</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libghdl/thin/vhdl/pyutils.html#list_iter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libghdl.thin.vhdl.pyutils.list_iter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterate of all element of Iir_List lst.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="libghdl.thin.vhdl.pyutils.name_image">
+<code class="sig-prename descclassname">libghdl.thin.vhdl.pyutils.</code><code class="sig-name descname">name_image</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nameid</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libghdl/thin/vhdl/pyutils.html#name_image"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libghdl.thin.vhdl.pyutils.name_image" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="libghdl.thin.vhdl.pyutils.nodes_iter">
+<code class="sig-prename descclassname">libghdl.thin.vhdl.pyutils.</code><code class="sig-name descname">nodes_iter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libghdl/thin/vhdl/pyutils.html#nodes_iter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libghdl.thin.vhdl.pyutils.nodes_iter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterate of all nodes of n, including n.
+Nodes are returned only once.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="libghdl.thin.vhdl.pyutils.sequential_iter">
+<code class="sig-prename descclassname">libghdl.thin.vhdl.pyutils.</code><code class="sig-name descname">sequential_iter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libghdl/thin/vhdl/pyutils.html#sequential_iter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libghdl.thin.vhdl.pyutils.sequential_iter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterator on sequential statements.  The first node must be either
+a process or a subprogram body.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="libghdl.thin.vhdl.pyutils.types_image">
+<code class="sig-prename descclassname">libghdl.thin.vhdl.pyutils.</code><code class="sig-name descname">types_image</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">t</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libghdl/thin/vhdl/pyutils.html#types_image"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libghdl.thin.vhdl.pyutils.types_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>String representation of Nodes_Meta.Types t</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../development/Debugging.html" class="btn btn-neutral float-right" title="Debugging" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="vhdl.html" class="btn btn-neutral float-left" title="libghdl.thin.vhdl" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2002-2020, Tristan Gingold and contributors
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/buildthedocs/sphinx.theme">theme</a>
+    
+    provided by <a href="https://buildthedocs.github.io">Build the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

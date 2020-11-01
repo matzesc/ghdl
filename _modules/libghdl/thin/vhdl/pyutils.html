@@ -1,0 +1,662 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>libghdl.thin.vhdl.pyutils &mdash; GHDL 1.0-dev documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="author" title="About these documents" href="../../../../about.html" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> GHDL
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../about.html">About GHDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contribute.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../licenses.html">Copyrights | Licenses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting GHDL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting/Releases.html">Releases and sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting/index.html">Building GHDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting/PrecompileVendorPrimitives.html">Precompile Vendor Primitives</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GHDL usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../quick_start/README.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../using/InvokingGHDL.html">Invoking GHDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../using/Simulation.html">Simulation (runtime)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../using/Synthesis.html">Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../using/CommandReference.html">Additional Command Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../using/Foreign.html">Co-simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../using/ImplementationOfVHDL.html">Implementation of VHDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../using/ImplementationOfVITAL.html">Implementation of VITAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../using/py/libghdl.html">Python Interface</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../development/Debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../development/CodingStyle.html">Coding Style</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internals</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../internals/Overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../internals/Frontend.html">Front-end</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../internals/AST.html">AST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../internals/RTI.html">Run Time Information (RTI)</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Index</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../genindex.html">Index</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">GHDL</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../../libghdl.html">libghdl</a> &raquo;</li>
+        
+      <li>libghdl.thin.vhdl.pyutils</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for libghdl.thin.vhdl.pyutils</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">ctypes</span> <span class="kn">import</span> <span class="n">c_char_p</span><span class="p">,</span> <span class="n">c_int32</span><span class="p">,</span> <span class="n">c_int</span><span class="p">,</span> <span class="n">c_bool</span><span class="p">,</span> <span class="n">sizeof</span><span class="p">,</span> <span class="n">c_void_p</span><span class="p">,</span> <span class="n">byref</span>
+<span class="kn">import</span> <span class="nn">libghdl.thin.name_table</span> <span class="k">as</span> <span class="nn">name_table</span>
+<span class="kn">import</span> <span class="nn">libghdl.thin.vhdl.nodes</span> <span class="k">as</span> <span class="nn">nodes</span>
+<span class="kn">import</span> <span class="nn">libghdl.thin.vhdl.nodes_meta</span> <span class="k">as</span> <span class="nn">nodes_meta</span>
+<span class="kn">import</span> <span class="nn">libghdl.thin.vhdl.lists</span> <span class="k">as</span> <span class="nn">lists</span>
+<span class="kn">import</span> <span class="nn">libghdl.thin.vhdl.flists</span> <span class="k">as</span> <span class="nn">flists</span>
+<span class="kn">from</span> <span class="nn">libghdl.thin.vhdl.nodes_meta</span> <span class="kn">import</span> <span class="n">Attr</span><span class="p">,</span> <span class="n">types</span>
+
+
+<div class="viewcode-block" id="name_image"><a class="viewcode-back" href="../../../../using/py/pyutils.html#libghdl.thin.vhdl.pyutils.name_image">[docs]</a><span class="k">def</span> <span class="nf">name_image</span><span class="p">(</span><span class="n">nameid</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">name_table</span><span class="o">.</span><span class="n">Get_Name_Ptr</span><span class="p">(</span><span class="n">nameid</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">_build_enum_image</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="k">if</span> <span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;_&quot;</span><span class="p">]</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+        <span class="n">res</span><span class="p">[</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">e</span><span class="p">)]</span> <span class="o">=</span> <span class="n">e</span>
+    <span class="k">return</span> <span class="n">res</span>
+
+
+<span class="n">_fields_image</span> <span class="o">=</span> <span class="n">_build_enum_image</span><span class="p">(</span><span class="n">nodes_meta</span><span class="o">.</span><span class="n">fields</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="fields_image"><a class="viewcode-back" href="../../../../using/py/pyutils.html#libghdl.thin.vhdl.pyutils.fields_image">[docs]</a><span class="k">def</span> <span class="nf">fields_image</span><span class="p">(</span><span class="n">idx</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;String representation of field idx&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_fields_image</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span></div>
+
+
+<span class="n">_kind_image</span> <span class="o">=</span> <span class="n">_build_enum_image</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="kind_image"><a class="viewcode-back" href="../../../../using/py/pyutils.html#libghdl.thin.vhdl.pyutils.kind_image">[docs]</a><span class="k">def</span> <span class="nf">kind_image</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;String representation of Iir_Kind k&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_kind_image</span><span class="p">[</span><span class="n">k</span><span class="p">]</span></div>
+
+
+<span class="n">_types_image</span> <span class="o">=</span> <span class="n">_build_enum_image</span><span class="p">(</span><span class="n">nodes_meta</span><span class="o">.</span><span class="n">types</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="types_image"><a class="viewcode-back" href="../../../../using/py/pyutils.html#libghdl.thin.vhdl.pyutils.types_image">[docs]</a><span class="k">def</span> <span class="nf">types_image</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;String representation of Nodes_Meta.Types t&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_types_image</span><span class="p">[</span><span class="n">t</span><span class="p">]</span></div>
+
+
+<span class="n">_attr_image</span> <span class="o">=</span> <span class="n">_build_enum_image</span><span class="p">(</span><span class="n">nodes_meta</span><span class="o">.</span><span class="n">Attr</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="attr_image"><a class="viewcode-back" href="../../../../using/py/pyutils.html#libghdl.thin.vhdl.pyutils.attr_image">[docs]</a><span class="k">def</span> <span class="nf">attr_image</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;String representation of Nodes_Meta.Attr a&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_attr_image</span><span class="p">[</span><span class="n">a</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="leftest_location"><a class="viewcode-back" href="../../../../using/py/pyutils.html#libghdl.thin.vhdl.pyutils.leftest_location">[docs]</a><span class="k">def</span> <span class="nf">leftest_location</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="n">Null_Iir</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">No_Location</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Get_Kind</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Array_Subtype_Definition</span><span class="p">:</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Get_Subtype_Type_Mark</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Get_Location</span><span class="p">(</span><span class="n">n</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="fields_iter"><a class="viewcode-back" href="../../../../using/py/pyutils.html#libghdl.thin.vhdl.pyutils.fields_iter">[docs]</a><span class="k">def</span> <span class="nf">fields_iter</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Iterate on fields of node n&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Null_Iir</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Get_Kind</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">first</span> <span class="o">=</span> <span class="n">nodes_meta</span><span class="o">.</span><span class="n">get_fields_first</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+    <span class="n">last</span> <span class="o">=</span> <span class="n">nodes_meta</span><span class="o">.</span><span class="n">get_fields_last</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="n">nodes_meta</span><span class="o">.</span><span class="n">get_field_by_index</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="chain_iter"><a class="viewcode-back" href="../../../../using/py/pyutils.html#libghdl.thin.vhdl.pyutils.chain_iter">[docs]</a><span class="k">def</span> <span class="nf">chain_iter</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Iterate of a chain headed by node n&quot;&quot;&quot;</span>
+    <span class="k">while</span> <span class="n">n</span> <span class="o">!=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Null_Iir</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">n</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Get_Chain</span><span class="p">(</span><span class="n">n</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="chain_to_list"><a class="viewcode-back" href="../../../../using/py/pyutils.html#libghdl.thin.vhdl.pyutils.chain_to_list">[docs]</a><span class="k">def</span> <span class="nf">chain_to_list</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert a chain headed by node n to a python list&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">chain_iter</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span></div>
+
+
+<div class="viewcode-block" id="nodes_iter"><a class="viewcode-back" href="../../../../using/py/pyutils.html#libghdl.thin.vhdl.pyutils.nodes_iter">[docs]</a><span class="k">def</span> <span class="nf">nodes_iter</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Iterate of all nodes of n, including n.</span>
+<span class="sd">    Nodes are returned only once.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Null_Iir</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="c1">#    print &#39;nodes_iter for {0}&#39;.format(n)</span>
+    <span class="k">yield</span> <span class="n">n</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fields_iter</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">typ</span> <span class="o">=</span> <span class="n">nodes_meta</span><span class="o">.</span><span class="n">get_field_type</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="c1">#        print &#39; {0}: field {1} (type: {2})&#39;.format(</span>
+        <span class="c1">#            n, fields_image(f), types_image(typ))</span>
+        <span class="k">if</span> <span class="n">typ</span> <span class="o">==</span> <span class="n">nodes_meta</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Iir</span><span class="p">:</span>
+            <span class="n">attr</span> <span class="o">=</span> <span class="n">nodes_meta</span><span class="o">.</span><span class="n">get_field_attribute</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">attr</span> <span class="o">==</span> <span class="n">Attr</span><span class="o">.</span><span class="n">ANone</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">n1</span> <span class="ow">in</span> <span class="n">nodes_iter</span><span class="p">(</span><span class="n">nodes_meta</span><span class="o">.</span><span class="n">Get_Iir</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">f</span><span class="p">)):</span>
+                    <span class="k">yield</span> <span class="n">n1</span>
+            <span class="k">elif</span> <span class="n">attr</span> <span class="o">==</span> <span class="n">Attr</span><span class="o">.</span><span class="n">Chain</span><span class="p">:</span>
+                <span class="n">n2</span> <span class="o">=</span> <span class="n">nodes_meta</span><span class="o">.</span><span class="n">Get_Iir</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+                <span class="k">while</span> <span class="n">n2</span> <span class="o">!=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Null_Iir</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">n1</span> <span class="ow">in</span> <span class="n">nodes_iter</span><span class="p">(</span><span class="n">n2</span><span class="p">):</span>
+                        <span class="k">yield</span> <span class="n">n1</span>
+                    <span class="n">n2</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Get_Chain</span><span class="p">(</span><span class="n">n2</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">attr</span> <span class="o">==</span> <span class="n">Attr</span><span class="o">.</span><span class="n">Maybe_Ref</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Get_Is_Ref</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+                    <span class="k">for</span> <span class="n">n1</span> <span class="ow">in</span> <span class="n">nodes_iter</span><span class="p">(</span><span class="n">nodes_meta</span><span class="o">.</span><span class="n">Get_Iir</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">f</span><span class="p">)):</span>
+                        <span class="k">yield</span> <span class="n">n1</span>
+        <span class="k">elif</span> <span class="n">typ</span> <span class="o">==</span> <span class="n">types</span><span class="o">.</span><span class="n">Iir_List</span><span class="p">:</span>
+            <span class="n">attr</span> <span class="o">=</span> <span class="n">nodes_meta</span><span class="o">.</span><span class="n">get_field_attribute</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">attr</span> <span class="o">==</span> <span class="n">Attr</span><span class="o">.</span><span class="n">ANone</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">n1</span> <span class="ow">in</span> <span class="n">list_iter</span><span class="p">(</span><span class="n">nodes_meta</span><span class="o">.</span><span class="n">Get_Iir_List</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">f</span><span class="p">)):</span>
+                    <span class="k">for</span> <span class="n">n2</span> <span class="ow">in</span> <span class="n">nodes_iter</span><span class="p">(</span><span class="n">n1</span><span class="p">):</span>
+                        <span class="k">yield</span> <span class="n">n2</span>
+        <span class="k">elif</span> <span class="n">typ</span> <span class="o">==</span> <span class="n">types</span><span class="o">.</span><span class="n">Iir_Flist</span><span class="p">:</span>
+            <span class="n">attr</span> <span class="o">=</span> <span class="n">nodes_meta</span><span class="o">.</span><span class="n">get_field_attribute</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">attr</span> <span class="o">==</span> <span class="n">Attr</span><span class="o">.</span><span class="n">ANone</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">n1</span> <span class="ow">in</span> <span class="n">flist_iter</span><span class="p">(</span><span class="n">nodes_meta</span><span class="o">.</span><span class="n">Get_Iir_Flist</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">f</span><span class="p">)):</span>
+                    <span class="k">for</span> <span class="n">n2</span> <span class="ow">in</span> <span class="n">nodes_iter</span><span class="p">(</span><span class="n">n1</span><span class="p">):</span>
+                        <span class="k">yield</span> <span class="n">n2</span></div>
+
+
+<div class="viewcode-block" id="list_iter"><a class="viewcode-back" href="../../../../using/py/pyutils.html#libghdl.thin.vhdl.pyutils.list_iter">[docs]</a><span class="k">def</span> <span class="nf">list_iter</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Iterate of all element of Iir_List lst.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">lst</span> <span class="o">&lt;=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_List_All</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="nb">iter</span> <span class="o">=</span> <span class="n">lists</span><span class="o">.</span><span class="n">Iterate</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">lists</span><span class="o">.</span><span class="n">Is_Valid</span><span class="p">(</span><span class="n">byref</span><span class="p">(</span><span class="nb">iter</span><span class="p">)):</span>
+        <span class="k">yield</span> <span class="n">lists</span><span class="o">.</span><span class="n">Get_Element</span><span class="p">(</span><span class="n">byref</span><span class="p">(</span><span class="nb">iter</span><span class="p">))</span>
+        <span class="n">lists</span><span class="o">.</span><span class="n">Next</span><span class="p">(</span><span class="n">byref</span><span class="p">(</span><span class="nb">iter</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="flist_iter"><a class="viewcode-back" href="../../../../using/py/pyutils.html#libghdl.thin.vhdl.pyutils.flist_iter">[docs]</a><span class="k">def</span> <span class="nf">flist_iter</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Iterate of all element of Iir_List lst.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">lst</span> <span class="o">&lt;=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Flist_All</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">flists</span><span class="o">.</span><span class="n">Flast</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="n">flists</span><span class="o">.</span><span class="n">Get_Nth_Element</span><span class="p">(</span><span class="n">lst</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="declarations_iter"><a class="viewcode-back" href="../../../../using/py/pyutils.html#libghdl.thin.vhdl.pyutils.declarations_iter">[docs]</a><span class="k">def</span> <span class="nf">declarations_iter</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Iterator on all declarations in n.&quot;&quot;&quot;</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Get_Kind</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nodes_meta</span><span class="o">.</span><span class="n">Has_Generic_Chain</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">n1</span> <span class="ow">in</span> <span class="n">chain_iter</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">Get_Generic_Chain</span><span class="p">(</span><span class="n">n</span><span class="p">)):</span>
+            <span class="k">yield</span> <span class="n">n1</span>
+    <span class="k">if</span> <span class="n">nodes_meta</span><span class="o">.</span><span class="n">Has_Port_Chain</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">n1</span> <span class="ow">in</span> <span class="n">chain_iter</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">Get_Port_Chain</span><span class="p">(</span><span class="n">n</span><span class="p">)):</span>
+            <span class="k">yield</span> <span class="n">n1</span>
+    <span class="k">if</span> <span class="n">nodes_meta</span><span class="o">.</span><span class="n">Has_Interface_Declaration_Chain</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">n1</span> <span class="ow">in</span> <span class="n">chain_iter</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">Get_Interface_Declaration_Chain</span><span class="p">(</span><span class="n">n</span><span class="p">)):</span>
+            <span class="k">yield</span> <span class="n">n1</span>
+    <span class="k">if</span> <span class="n">nodes_meta</span><span class="o">.</span><span class="n">Has_Declaration_Chain</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">n1</span> <span class="ow">in</span> <span class="n">chain_iter</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">Get_Declaration_Chain</span><span class="p">(</span><span class="n">n</span><span class="p">)):</span>
+            <span class="n">k1</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Get_Kind</span><span class="p">(</span><span class="n">n1</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">k1</span> <span class="ow">in</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kinds</span><span class="o">.</span><span class="n">Specification</span> <span class="ow">or</span> <span class="n">k1</span> <span class="o">==</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Use_Clause</span><span class="p">:</span>
+                <span class="c1"># Not a declaration</span>
+                <span class="k">pass</span>
+            <span class="k">elif</span> <span class="n">k1</span> <span class="o">==</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Signal_Attribute_Declaration</span><span class="p">:</span>
+                <span class="c1"># Not a declaration</span>
+                <span class="k">pass</span>
+            <span class="k">elif</span> <span class="n">k1</span> <span class="ow">in</span> <span class="p">[</span>
+                <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Type_Declaration</span><span class="p">,</span>
+                <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Anonymous_Type_Declaration</span><span class="p">,</span>
+            <span class="p">]:</span>
+                <span class="k">yield</span> <span class="n">n1</span>
+                <span class="c1"># Handle nested declarations: record elements, physical units,</span>
+                <span class="c1"># enumeration literals...</span>
+                <span class="n">typ</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Get_Type_Definition</span><span class="p">(</span><span class="n">n1</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">n2</span> <span class="ow">in</span> <span class="n">declarations_iter</span><span class="p">(</span><span class="n">n1</span><span class="p">):</span>
+                    <span class="k">yield</span> <span class="n">n2</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">n1</span>
+                <span class="c1"># There can be nested declarations (subprograms)</span>
+                <span class="k">for</span> <span class="n">n2</span> <span class="ow">in</span> <span class="n">declarations_iter</span><span class="p">(</span><span class="n">n1</span><span class="p">):</span>
+                    <span class="k">yield</span> <span class="n">n2</span>
+    <span class="k">if</span> <span class="n">nodes_meta</span><span class="o">.</span><span class="n">Has_Concurrent_Statement_Chain</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">n1</span> <span class="ow">in</span> <span class="n">chain_iter</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">Get_Concurrent_Statement_Chain</span><span class="p">(</span><span class="n">n</span><span class="p">)):</span>
+            <span class="k">for</span> <span class="n">n2</span> <span class="ow">in</span> <span class="n">declarations_iter</span><span class="p">(</span><span class="n">n1</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">n2</span>
+    <span class="k">if</span> <span class="n">nodes_meta</span><span class="o">.</span><span class="n">Has_Sequential_Statement_Chain</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">n1</span> <span class="ow">in</span> <span class="n">chain_iter</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">Get_Sequential_Statement_Chain</span><span class="p">(</span><span class="n">n</span><span class="p">)):</span>
+            <span class="k">for</span> <span class="n">n2</span> <span class="ow">in</span> <span class="n">declarations_iter</span><span class="p">(</span><span class="n">n1</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">n2</span>
+    <span class="k">if</span> <span class="n">nodes_meta</span><span class="o">.</span><span class="n">Has_Parameter_Specification</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Get_Parameter_Specification</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nodes_meta</span><span class="o">.</span><span class="n">Has_Generate_Statement_Body</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">n1</span> <span class="ow">in</span> <span class="n">declarations_iter</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">Get_Generate_Statement_Body</span><span class="p">(</span><span class="n">n</span><span class="p">)):</span>
+            <span class="k">yield</span> <span class="n">n1</span>
+    <span class="k">if</span> <span class="n">nodes_meta</span><span class="o">.</span><span class="n">Has_Else_Clause</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+        <span class="n">n1</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Get_Else_Clause</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">n1</span> <span class="o">!=</span> <span class="n">Null_Iir</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">n2</span> <span class="ow">in</span> <span class="n">declarations_iter</span><span class="p">(</span><span class="n">n1</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">n2</span>
+    <span class="k">if</span> <span class="n">nodes_meta</span><span class="o">.</span><span class="n">Has_Generate_Else_Clause</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+        <span class="n">n1</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Get_Generate_Else_Clause</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">n1</span> <span class="o">!=</span> <span class="n">Null_Iir</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">n2</span> <span class="ow">in</span> <span class="n">declarations_iter</span><span class="p">(</span><span class="n">n1</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">n2</span>
+    <span class="k">if</span> <span class="n">nodes_meta</span><span class="o">.</span><span class="n">Has_Block_Header</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+        <span class="n">n1</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Get_Block_Header</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">n1</span> <span class="o">!=</span> <span class="n">Null_Iir</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">n2</span> <span class="ow">in</span> <span class="n">declarations_iter</span><span class="p">(</span><span class="n">n1</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">n2</span>
+    <span class="c1"># All these nodes are handled:</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Entity_Declaration</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Architecture_Body</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Package_Declaration</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Package_Body</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Process_Statement</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Sensitized_Process_Statement</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Concurrent_Assertion_Statement</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Concurrent_Simple_Signal_Assignment</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Concurrent_Selected_Signal_Assignment</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Concurrent_Conditional_Signal_Assignment</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Concurrent_Procedure_Call_Statement</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Block_Statement</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Block_Header</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">For_Generate_Statement</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">If_Generate_Statement</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Generate_Statement_Body</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Assertion_Statement</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Wait_Statement</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Simple_Signal_Assignment_Statement</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Variable_Assignment_Statement</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">For_Loop_Statement</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">While_Loop_Statement</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Case_Statement</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Null_Statement</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Exit_Statement</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Next_Statement</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Procedure_Call_Statement</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Signal_Declaration</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Constant_Declaration</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Variable_Declaration</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">File_Declaration</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Object_Alias_Declaration</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Attribute_Declaration</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Component_Declaration</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Use_Clause</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">If_Statement</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Elsif</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Return_Statement</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Type_Declaration</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Anonymous_Type_Declaration</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Subtype_Declaration</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Function_Declaration</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Function_Body</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Procedure_Declaration</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Procedure_Body</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Component_Instantiation_Statement</span><span class="p">,</span>
+    <span class="p">]:</span>
+        <span class="k">return</span>
+    <span class="k">assert</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;unknown node of kind </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">kind_image</span><span class="p">(</span><span class="n">k</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="concurrent_stmts_iter"><a class="viewcode-back" href="../../../../using/py/pyutils.html#libghdl.thin.vhdl.pyutils.concurrent_stmts_iter">[docs]</a><span class="k">def</span> <span class="nf">concurrent_stmts_iter</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Iterator on concurrent statements in n.&quot;&quot;&quot;</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Get_Kind</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Design_File</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">n1</span> <span class="ow">in</span> <span class="n">chain_iter</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">Get_First_Design_Unit</span><span class="p">(</span><span class="n">n</span><span class="p">)):</span>
+            <span class="k">for</span> <span class="n">n2</span> <span class="ow">in</span> <span class="n">concurrent_stmts_iter</span><span class="p">(</span><span class="n">n1</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">n2</span>
+    <span class="k">elif</span> <span class="n">k</span> <span class="o">==</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Design_Unit</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">n1</span> <span class="ow">in</span> <span class="n">concurrent_stmts_iter</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">Get_Library_Unit</span><span class="p">(</span><span class="n">n</span><span class="p">)):</span>
+            <span class="k">yield</span> <span class="n">n1</span>
+    <span class="k">elif</span> <span class="p">(</span>
+        <span class="n">k</span> <span class="o">==</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Entity_Declaration</span>
+        <span class="ow">or</span> <span class="n">k</span> <span class="o">==</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Architecture_Body</span>
+        <span class="ow">or</span> <span class="n">k</span> <span class="o">==</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Block_Statement</span>
+    <span class="p">):</span>
+        <span class="k">for</span> <span class="n">n1</span> <span class="ow">in</span> <span class="n">chain_iter</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">Get_Concurrent_Statement_Chain</span><span class="p">(</span><span class="n">n</span><span class="p">)):</span>
+            <span class="k">yield</span> <span class="n">n1</span>
+            <span class="k">for</span> <span class="n">n2</span> <span class="ow">in</span> <span class="n">concurrent_stmts_iter</span><span class="p">(</span><span class="n">n1</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">n2</span>
+    <span class="k">elif</span> <span class="n">k</span> <span class="o">==</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">For_Generate_Statement</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">n1</span> <span class="ow">in</span> <span class="n">concurrent_stmts_iter</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">Get_Generate_Statement_Body</span><span class="p">(</span><span class="n">n</span><span class="p">)):</span>
+            <span class="k">yield</span> <span class="n">n1</span>
+    <span class="k">elif</span> <span class="n">k</span> <span class="o">==</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">If_Generate_Statement</span><span class="p">:</span>
+        <span class="k">while</span> <span class="n">n</span> <span class="o">!=</span> <span class="n">Null_Iir</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">n1</span> <span class="ow">in</span> <span class="n">concurrent_stmts_iter</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">Get_Generate_Statement_Body</span><span class="p">(</span><span class="n">n</span><span class="p">)):</span>
+                <span class="k">yield</span> <span class="n">n1</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Get_Generate_Else_Clause</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">k</span> <span class="o">==</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Case_Generate_Statement</span><span class="p">:</span>
+        <span class="n">alt</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Get_Case_Statement_Alternative_Chain</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">n1</span> <span class="ow">in</span> <span class="n">chain_iter</span><span class="p">(</span><span class="n">alt</span><span class="p">):</span>
+            <span class="n">blk</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Get_Associated_Block</span><span class="p">(</span><span class="n">n1</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">blk</span> <span class="o">!=</span> <span class="n">Null_Iir</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">n2</span> <span class="ow">in</span> <span class="n">concurrent_stmts_iter</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">Get_Generate_Statement_Body</span><span class="p">(</span><span class="n">n</span><span class="p">)):</span>
+                    <span class="k">yield</span> <span class="n">n2</span></div>
+
+
+<div class="viewcode-block" id="constructs_iter"><a class="viewcode-back" href="../../../../using/py/pyutils.html#libghdl.thin.vhdl.pyutils.constructs_iter">[docs]</a><span class="k">def</span> <span class="nf">constructs_iter</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Iterator on library unit, concurrent statements and declarations</span>
+<span class="sd">    that appear directly within a declarative part.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="n">thin</span><span class="o">.</span><span class="n">Null_Iir</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Get_Kind</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Design_File</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">n1</span> <span class="ow">in</span> <span class="n">chain_iter</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">Get_First_Design_Unit</span><span class="p">(</span><span class="n">n</span><span class="p">)):</span>
+            <span class="k">for</span> <span class="n">n2</span> <span class="ow">in</span> <span class="n">constructs_iter</span><span class="p">(</span><span class="n">n1</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">n2</span>
+    <span class="k">elif</span> <span class="n">k</span> <span class="o">==</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Design_Unit</span><span class="p">:</span>
+        <span class="n">n1</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Get_Library_Unit</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="n">n1</span>
+        <span class="k">for</span> <span class="n">n2</span> <span class="ow">in</span> <span class="n">constructs_iter</span><span class="p">(</span><span class="n">n1</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="n">n2</span>
+    <span class="k">elif</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Entity_Declaration</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Architecture_Body</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Block_Statement</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Generate_Statement_Body</span><span class="p">,</span>
+    <span class="p">]:</span>
+        <span class="k">for</span> <span class="n">n1</span> <span class="ow">in</span> <span class="n">chain_iter</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">Get_Declaration_Chain</span><span class="p">(</span><span class="n">n</span><span class="p">)):</span>
+            <span class="k">yield</span> <span class="n">n1</span>
+            <span class="k">for</span> <span class="n">n2</span> <span class="ow">in</span> <span class="n">constructs_iter</span><span class="p">(</span><span class="n">n1</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">n2</span>
+        <span class="k">for</span> <span class="n">n1</span> <span class="ow">in</span> <span class="n">chain_iter</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">Get_Concurrent_Statement_Chain</span><span class="p">(</span><span class="n">n</span><span class="p">)):</span>
+            <span class="k">yield</span> <span class="n">n1</span>
+            <span class="k">for</span> <span class="n">n2</span> <span class="ow">in</span> <span class="n">constructs_iter</span><span class="p">(</span><span class="n">n1</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">n2</span>
+    <span class="k">elif</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Configuration_Declaration</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Package_Declaration</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Package_Body</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Function_Body</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Procedure_Body</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Protected_Type_Declaration</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Protected_Type_Body</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Process_Statement</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Sensitized_Process_Statement</span><span class="p">,</span>
+    <span class="p">]:</span>
+        <span class="k">for</span> <span class="n">n1</span> <span class="ow">in</span> <span class="n">chain_iter</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">Get_Declaration_Chain</span><span class="p">(</span><span class="n">n</span><span class="p">)):</span>
+            <span class="k">yield</span> <span class="n">n1</span>
+            <span class="k">for</span> <span class="n">n2</span> <span class="ow">in</span> <span class="n">constructs_iter</span><span class="p">(</span><span class="n">n1</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">n2</span>
+    <span class="k">elif</span> <span class="n">k</span> <span class="o">==</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">For_Generate_Statement</span><span class="p">:</span>
+        <span class="n">n1</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Get_Generate_Statement_Body</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="n">n1</span>
+        <span class="k">for</span> <span class="n">n2</span> <span class="ow">in</span> <span class="n">constructs_iter</span><span class="p">(</span><span class="n">n1</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="n">n2</span>
+    <span class="k">elif</span> <span class="n">k</span> <span class="o">==</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">If_Generate_Statement</span><span class="p">:</span>
+        <span class="k">while</span> <span class="n">n</span> <span class="o">!=</span> <span class="n">Null_Iir</span><span class="p">:</span>
+            <span class="n">n1</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Get_Generate_Statement_Body</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+            <span class="k">yield</span> <span class="n">n1</span>
+            <span class="k">for</span> <span class="n">n2</span> <span class="ow">in</span> <span class="n">constructs_iter</span><span class="p">(</span><span class="n">n1</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">n2</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Get_Generate_Else_Clause</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">k</span> <span class="o">==</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Case_Generate_Statement</span><span class="p">:</span>
+        <span class="n">alt</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Get_Case_Statement_Alternative_Chain</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">n1</span> <span class="ow">in</span> <span class="n">chain_iter</span><span class="p">(</span><span class="n">alt</span><span class="p">):</span>
+            <span class="n">blk</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Get_Associated_Block</span><span class="p">(</span><span class="n">n1</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">blk</span> <span class="o">!=</span> <span class="n">Null_Iir</span><span class="p">:</span>
+                <span class="n">n2</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Get_Generate_Statement_Body</span><span class="p">(</span><span class="n">blk</span><span class="p">)</span>
+                <span class="k">yield</span> <span class="n">n2</span>
+                <span class="k">for</span> <span class="n">n3</span> <span class="ow">in</span> <span class="n">constructs_iter</span><span class="p">(</span><span class="n">n2</span><span class="p">):</span>
+                    <span class="k">yield</span> <span class="n">n3</span></div>
+
+
+<div class="viewcode-block" id="sequential_iter"><a class="viewcode-back" href="../../../../using/py/pyutils.html#libghdl.thin.vhdl.pyutils.sequential_iter">[docs]</a><span class="k">def</span> <span class="nf">sequential_iter</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Iterator on sequential statements.  The first node must be either</span>
+<span class="sd">    a process or a subprogram body.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="n">thin</span><span class="o">.</span><span class="n">Null_Iir</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Get_Kind</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Process_Statement</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Sensitized_Process_Statement</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Function_Body</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Procedure_Body</span><span class="p">,</span>
+    <span class="p">]:</span>
+        <span class="k">for</span> <span class="n">n1</span> <span class="ow">in</span> <span class="n">chain_iter</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">Get_Sequential_Statement_Chain</span><span class="p">(</span><span class="n">n</span><span class="p">)):</span>
+            <span class="k">yield</span> <span class="n">n1</span>
+            <span class="k">for</span> <span class="n">n2</span> <span class="ow">in</span> <span class="n">sequential_iter</span><span class="p">(</span><span class="n">n1</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">n2</span>
+    <span class="k">elif</span> <span class="n">k</span> <span class="o">==</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">If_Statement</span><span class="p">:</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Get_Chain</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="n">thin</span><span class="o">.</span><span class="n">Null_Iir</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="k">yield</span> <span class="n">n</span>
+            <span class="k">for</span> <span class="n">n1</span> <span class="ow">in</span> <span class="n">sequential_iter</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">n1</span>
+    <span class="k">elif</span> <span class="n">k</span> <span class="o">==</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Case_Statement</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">chain_iter</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">Get_Case_Statement_Alternative_Chain</span><span class="p">(</span><span class="n">n</span><span class="p">)):</span>
+            <span class="n">stmt</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Get_Associated_Chain</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">stmt</span> <span class="o">!=</span> <span class="n">thin</span><span class="o">.</span><span class="n">Null_Iir</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">n1</span> <span class="ow">in</span> <span class="n">chain_iter</span><span class="p">(</span><span class="n">stmt</span><span class="p">):</span>
+                    <span class="k">yield</span> <span class="n">n1</span>
+                    <span class="k">for</span> <span class="n">n2</span> <span class="ow">in</span> <span class="n">sequential_iter</span><span class="p">(</span><span class="n">n1</span><span class="p">):</span>
+                        <span class="k">yield</span> <span class="n">n2</span>
+    <span class="k">elif</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">For_Loop_Statement</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">While_Loop_Statement</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="n">n1</span> <span class="ow">in</span> <span class="n">chain_iter</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">Get_Sequential_Statement_Chain</span><span class="p">(</span><span class="n">n</span><span class="p">)):</span>
+            <span class="k">yield</span> <span class="n">n1</span>
+            <span class="k">for</span> <span class="n">n2</span> <span class="ow">in</span> <span class="n">sequential_iter</span><span class="p">(</span><span class="n">n1</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">n2</span>
+    <span class="k">elif</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Assertion_Statement</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Wait_Statement</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Null_Statement</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Exit_Statement</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Next_Statement</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Return_Statement</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Variable_Assignment_Statement</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Simple_Signal_Assignment_Statement</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">Iir_Kind</span><span class="o">.</span><span class="n">Procedure_Call_Statement</span><span class="p">,</span>
+    <span class="p">]:</span>
+        <span class="k">return</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;unknown node of kind </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">kind_image</span><span class="p">(</span><span class="n">k</span><span class="p">))</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2002-2020, Tristan Gingold and contributors
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/buildthedocs/sphinx.theme">theme</a>
+    
+    provided by <a href="https://buildthedocs.github.io">Build the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
